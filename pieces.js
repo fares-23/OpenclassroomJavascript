@@ -76,7 +76,7 @@ boutonTrierDecroissant.addEventListener("click",function(){
 })
 
 
-const noms = pieces.map(piece => piece.nom);
+const noms = pieces.map(pieces => pieces.nom);
 for(let i = pieces.length -1 ; i >= 0; i--){
    if(pieces[i].prix > 35){
        noms.splice(i,1)
@@ -97,10 +97,12 @@ document.querySelector('.abordable').appendChild(abordablesElements)
 
 
 
-const piecesDispo = pieces.map(piece => piece.nom)
+const piecesDispo = pieces.map(pieces => pieces.nom)
+const piecesPrix = pieces.map(pieces => pieces.prix)
 for(let i = pieces.length-1;i>=0;i--){
     if(pieces[i].disponibilité != true){
         piecesDispo.splice(i,1)
+        piecesPrix.splice(i,1)
     }
 }
 
@@ -110,6 +112,6 @@ document.querySelector('.disponible').appendChild(dispoElement)
 
 for(let i=0;i<piecesDispo.length;i++){
     const element = document.createElement('li')
-    element.innerText = piecesDispo[i]
+    element.innerText = `${piecesDispo[i]} - ${piecesPrix[i]} €`
     dispoElement.appendChild(element)
 }
